@@ -38,8 +38,10 @@ public class Main {
         return route.toString();
     }
 
-    private synchronized static void sumCountR(long count) {
-        sizeToFreq.put(count, sizeToFreq.getOrDefault(count, 0) +1);
+    private static void sumCountR(long count) {
+        synchronized(sizeToFreq) {
+            sizeToFreq.put(count, sizeToFreq.getOrDefault(count, 0) +1);
+        }
     }
 
 }
